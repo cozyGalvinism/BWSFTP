@@ -10,4 +10,4 @@ bin           = @["BWSFTP"]
 
 # Dependencies
 
-requires "nim >= 1.4.2", "argparse == 2.0.0"
+requires "nim >= 1.4.2", "argparse == 2.0.0", "parseini == 0.1.0"
