@@ -34,9 +34,14 @@ proc spawn*(self: WinSCP): int =
     var local: string = iniConfig.get("SFTP", "Lokal")
     var remote: string = iniConfig.get("SFTP", "Remote")
     var file: string = iniConfig.get("SFTP", "DateiMuster")
+    var useCd: string = iniConfig.get("SFTP", "CDVerwenden")
 
     let fp = open("tmpscript.txt", fmWrite)
-    fp.writeLine(&"open sftp://{user}:{pass}@{server}{remote} -hostkey=*")
+    if useCd == "1":
+        fp.writeLine(&"open sftp://{user}:{pass}@{server} -hostkey=*")
+        fp.writeLine(&"cd .{remote}")
+    else:
+        fp.writeLine(&"open sftp://{user}:{pass}@{server}{remote} -hostkey=*")
     fp.writeLine(&"lcd \"{local}\"")
     fp.writeLine(&"put \"{file}\"")
     fp.writeLine("exit")
