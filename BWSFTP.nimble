@@ -1,6 +1,6 @@
 # Package
 
-version       = "1.0.0"
+version       = "1.0.1"
 author        = "cozyGalvinism"
 description   = "Ein Wrapper für WinSCP um SFTP in der BüroWARE zu ermöglichen"
 license       = "GPL-3.0"
